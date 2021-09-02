@@ -4,9 +4,8 @@ Software criado para discutir os conceitos de criação de uma Aplicação Web, 
 ## Autora
 Lívia Gabrielle Regis Pereira
 
-## Coautores
+## Coautor
 Wellington W. F. Sarmento
-Paulo Henrique Gomes da Silva
 
 ## Licença
 Esta aplicação se encontra sob a licença Gnu [Public License Version 3.0](https://github.com/wwagner33/first-app2/blob/main/LICENSE). "The Software must floor".
