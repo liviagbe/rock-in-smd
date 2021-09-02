@@ -1,0 +1,144 @@
+<%- contentFor( 'body') %>
+
+<div class="bgCadastro">
+    
+    <div class="alinhamento">
+        <div class="cad1">
+            <h2 class="tVip">Cadastrar VIP</h2>
+            <p class="pVip">Os VIPs são aqueles que passaram de semestre direto e poderão curtir bem <s>as férias</s> o festival!</p>
+        </div>
+        
+
+        <div class="cad2">
+            
+            <fieldset class="grupo">
+                <!-- Nome  -->
+                <div class="campo">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nome" required>
+                </div>
+
+                <!-- Sobrenome -->
+                <div class="campo">
+                    <label for="sobrenome">Sobrenome</label>
+                    <input type="text" name="sobrenome" id="sobrenome" required>
+                </div>
+            </fieldset>
+            
+            <!-- Email -->
+            <div class="campo" id="email2">
+                <label for="email" #email>Email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            
+            <fieldset class="grupo">
+                <!-- Idade -->
+                <div class="campo">
+                    <label for="idade">Idade</label>
+                    <input type="text" name="nome" id="nome" required>
+                </div>
+
+                <!-- Altura -->
+                <div class="campo">
+                    <label for="altura">Altura</label>
+                    <input type="text" name="sobrenome" id="sobrenome" required>
+                </div>
+            </fieldset>
+
+            <!-- É do rock? -->
+            <div class="campo" id="rock2">
+                <label for="rock">É do Rock?</label>
+                <select id="rock" required>
+                <option selected disabled value="">Selecione</option>
+                <option>Sim (muito bem)</option>
+                <option>Não (cara, sai daqui)</option>
+                </select>
+            </div>
+
+            <!-- Botão enviar --> 
+            <button class="botao" type="submit" onsubmit="">Agora serei VIP</button>  
+
+        </div>
+    </div>
+ 
+    <div class="cad3">
+        <h2 class="vipCad">V I P</h2>
+        <p class="subCad">Confira a lista dos que já podem deitar a cabeça no travesseiro e dormir em paz:</p>
+    </div>
+     
+
+    <table class="tabelaCadastro" id="list">
+        <thead class="theadCad">
+            <tr>
+                <th class="headCad">Nome</th>
+                <th class="headCad">Endereço</th>
+                <th class="headCad">Email</th>
+                <th class="headCad">Idade</th>
+                <th class="headCad">Altura</th>
+                <th class="headCad">Rock?</th>
+                <th class="headCad">Editar</th>
+                <th class="headCad">Remover</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            
+
+            <% let linkRemove="/cadastro/remove/"; %>
+            <% let linkUpdate="/cadastro/update/"; %>
+
+            <% if(users.length >0){%>
+                <% for(let index=0;index<users.length;index++){ %>
+                    <tr data-index-row="<%= index %>">
+                        
+                    <td  class="tbodyCad" data-index-row="<%=index%>">
+                        <span  class="show"><%= users[index].name %></span>
+                        <input type="text" name="name"  class="hidden" value="<%= users[index].name %>">
+                    </td>
+                    <td  class="tbodyCad" data-index-row="<%=index%>">
+                        <span  class="show"><%= users[index].email %></span>
+                        <input type="text" name="email"  class="hidden" value="<%= users[index].email %>">
+                    </td>
+                    <td  class="tbodyCad" data-index-row="<%=index%>">
+                        <span  class="show"><%= users[index].address %></span>
+                        <input type="text" name="address"  class="hidden" value="<%= users[index].address %>">
+                    </td>
+                    <td  class="tbodyCad" data-index-row="<%=index%>">
+                        <span  class="show"><%= users[index].age %></span>
+                        <input type="text" name="age"  class="hidden" value="<%= users[index].age %>">
+                        
+                    </td>
+                    <td  class="tbodyCad" data-index-row="<%=index%>">
+                        <span  class="show"><%= users[index].heigth %></span>
+                        <input type="text" name="heigth"  class="hidden" value="<%= users[index].heigth %>">
+                        
+                    </td>
+                    <td  class="tbodyCad" data-index-row="<%=index%>">
+                        <span  class="show"><%= users[index].vote %></span>
+                        <input type="text" name="vote" class="hidden" value="<%= users[index].vote %>">
+                        
+                    </td>
+                    
+                    <!--edit--> 
+                    <td  class="tbodyIcon" data-index-row="<%=index%>" class="hidden" data-index-row="<%=index%>">
+                        <a href="#" onclick="update('<%=index%>','<%= linkUpdate %>')" class="show"><i class="fas fa-pen"></i></a>  
+                    </td>
+
+                    <!--remove--> 
+                    <td  class="tbodyIcon" data-index-row="<%= index %>">
+                        <a href="#" class="show" onclick="remove('<%=index %>','<%=users[index].name %>','<%=linkRemove%>')"><i class="fas fa-trash-alt"></i></a>
+                    </td> 
+
+
+                    </tr>
+
+                <% } //for %>
+            <% }else{%>
+                <tr><td colspan="7"><p class="bg-info text-white">Nenhum dado cadastrado</p></td></tr>
+
+            <%} //If-Else %>   
+
+        </tbody>
+    </table>
+
+</div>
